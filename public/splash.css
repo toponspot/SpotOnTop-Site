@@ -1,0 +1,35 @@
+#sot-splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse 60% 45% at 50% 42%,rgba(255,199,44,.18),transparent 70%),#262624;
+  color:#F5F4EE;font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  opacity:1;transition:opacity .5s cubic-bezier(.4,0,.2,1);
+  will-change:opacity;transform:translateZ(0);backface-visibility:hidden;contain:strict}
+#sot-splash.done{opacity:0;pointer-events:none}
+
+#sot-splash .sot-logo{position:relative;width:96px;height:96px}
+#sot-splash .sot-logo i{position:absolute;bottom:0;width:20px;border-radius:4px;transform:scaleY(0);transform-origin:bottom;will-change:transform;animation:sot-rise .5s cubic-bezier(.2,.8,.2,1) forwards}
+#sot-splash .sot-logo i:nth-child(1){left:0;height:34px;background:#5E6B94;animation-delay:.10s}
+#sot-splash .sot-logo i:nth-child(2){left:28px;height:50px;background:#A9B6DC;animation-delay:.20s}
+#sot-splash .sot-logo i:nth-child(3){left:56px;height:68px;background:#F5F4EE;animation-delay:.30s}
+#sot-splash .sot-dot{position:absolute;left:70px;top:6px;width:16px;height:16px;border-radius:50%;background:#FFC72C;box-shadow:0 0 18px rgba(255,199,44,.6);opacity:0;will-change:transform,opacity;animation:sot-drop .3s .5s cubic-bezier(.2,.8,.2,1) forwards}
+
+#sot-splash .sot-name{margin-top:22px;font:800 26px 'Plus Jakarta Sans',system-ui,sans-serif;opacity:0;will-change:opacity;animation:sot-fade .4s .6s ease forwards}
+#sot-splash .sot-name em{font-style:normal;color:#FFC72C}
+#sot-splash .sot-status{margin-top:34px;font:700 10.5px 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:.24em;color:#A8A69C;opacity:0;animation:sot-fade .3s .25s ease forwards;min-height:14px}
+#sot-splash .sot-status .rd{display:inline-block;width:8px;height:8px;border-radius:50%;background:#E5534B;margin-right:9px;animation:sot-blink 1s infinite}
+
+/* Progress bar animates transform (GPU), not width (layout). */
+#sot-splash .sot-bar{width:200px;height:1px;background:rgba(243,238,227,.14);margin-top:14px;position:relative}
+#sot-splash .sot-bar b{position:absolute;left:0;top:-.5px;height:2px;width:100%;background:linear-gradient(90deg,#FFC72C,#FFD766);
+  transform:scaleX(0);transform-origin:left center;will-change:transform;animation:sot-load 1.2s .2s cubic-bezier(.4,0,.2,1) forwards}
+#sot-splash.ready .sot-bar b{animation:sot-finish .25s ease-out forwards}
+
+#sot-splash .sot-tag{position:absolute;bottom:13%;font:800 30px 'Plus Jakarta Sans',system-ui,sans-serif;color:#FFC72C;opacity:0;transform:translateY(12px);will-change:transform,opacity;transition:opacity .4s ease,transform .4s cubic-bezier(.2,.8,.2,1)}
+#sot-splash.ready .sot-tag{opacity:1;transform:none}
+
+@keyframes sot-rise{to{transform:scaleY(1)}}
+@keyframes sot-drop{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}
+@keyframes sot-fade{to{opacity:1}}
+@keyframes sot-load{from{transform:scaleX(0)}to{transform:scaleX(.9)}}
+@keyframes sot-finish{from{transform:scaleX(.9)}to{transform:scaleX(1)}}
+@keyframes sot-blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){#sot-splash{display:none}}

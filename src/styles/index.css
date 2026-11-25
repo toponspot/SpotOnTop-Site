@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  PAGE SCALE (desktop only).
+  Shows the site the way Chrome renders it at 80% zoom, so the default 100% view looks the same.
+  Applies from 1024px wide up; phones and small tablets stay at 100%.
+  To change the size, edit the number below AND PAGE_ZOOM in tailwind.config.js (keep them equal).
+*/
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.8;
+  }
+}
+
+/*
+  Design tokens: Spot On Top · Final design handover v2.1 (dark + yellow, Plus Jakarta Sans).
+  Surfaces are stored as RGB channels so Tailwind's opacity modifiers (bg-ink-800/60)
+  keep working in both themes.
+
+  Dark surfaces
+    ink-950  #1F1F1E  main background
+    ink-900  #262624  primary surface, inner rows, inputs
+    ink-850  #2A2A28  raised surface (modals)
+    ink-800  #30302E  panels and cards
+    ink-750  #3A3A37  hover / selected row
+    line     #3D3D3A  borders and dividers
+*/
+@layer base {
+
+  :root,
+  :root.light .force-dark {
+    color-scheme: dark;
+    --ink-950: 31 31 30;
+    --ink-900: 38 38 36;
+    --ink-850: 42 42 40;
+    --ink-800: 48 48 46;
+    --ink-750: 58 58 55;
+    --section-a: 38 38 36;
+    --section-b: 31 31 30;
+    --line: 61 61 58;
+    --line-strong: 86 86 80;
+    --fg: 245 244 238;
+    --fg-muted: 194 192 182;
+    --fg-subtle: 168 166 156;
+    --accent-ink: 255 199 44;
+    --mint-ink: 127 211 168;
+    --iris-ink: 143 163 214;
+    --coral-ink: 229 83 75;
+  }
+
+  /*
+    Light theme. Contrast measured against the white / warm-grey surfaces:
+    yellow TEXT is #946300 (4.9:1). #E09A00 is only 2.3:1, so it is for dots, lines and icons only.
+  */
+  :root.light {
+    color-scheme: light;
+    --ink-950: 245 244 238;
+    --ink-900: 238 236 228;
+    --ink-850: 250 249 245;
+    --ink-800: 255 255 255;
+    --ink-750: 232 229 219;
+    --section-a: 251 250 246;
+    --section-b: 245 244 238;
+    --line: 221 218 208;
+    --line-strong: 190 187 176;
+    --fg: 38 38 36;
+    --fg-muted: 85 83 76;
+    --fg-subtle: 111 109 100;
+    --accent-ink: 148 99 0;
+    --mint-ink: 31 122 82;
+    --iris-ink: 63 86 158;
+    --coral-ink: 192 57 47;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-fg antialiased;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    font-feature-settings: 'tnum' 0;
+  }
+
+  ::selection {
+    @apply bg-gold text-navy;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-ink-950;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Scroll reveal: transform + opacity only, under 600 ms. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 480ms ease-out, transform 480ms ease-out;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Without JS or with reduced motion, content is never hidden. */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Tabular figures for every live or money number. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Small caps label used by eyebrows, kickers and buttons. */
+  .caps {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+}
+
+/*
+  Theme switch (dark ⇄ light): the old page stays still underneath while the new one is revealed
+  as a growing circle. The circle itself is animated from Navbar.jsx (ThemeToggle).
+  Turning off the default cross-fade is what makes it a clean wipe instead of a blur.
+*/
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}

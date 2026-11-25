@@ -1,0 +1,86 @@
+{
+  "_readme": "THE ONLY PLACE PRICES LIVE. Every screen reads from here. To move from launch to full prices, change \"mode\" below from \"launch\" to \"full\" and nothing else. All prices are per month per brand unless 'unit' says otherwise, before GST. USD values are stored, never converted from rupees.",
+
+  "mode": "launch",
+
+  "gst": {
+    "INR": 0.18,
+    "USD": null,
+    "usdNote": "USD quotes show 'Taxes as applicable' until the accountant confirms the rule. Do not invent a USD tax figure."
+  },
+
+  "founding": {
+    "lockMonths": 12,
+    "placesTotal": 4,
+    "placesTaken": 0,
+    "placesSlot": "home-top",
+    "showFullPriceCrossedOut": false
+  },
+
+  "durationDiscounts": {
+    "1": 0,
+    "3": 0.03,
+    "6": 0.05,
+    "12": 0.08
+  },
+
+  "slots": {
+    "home-top": {
+      "unit": "month",
+      "launch": { "INR": 40000, "USD": 510 },
+      "full": { "INR": 75000, "USD": 960 }
+    },
+    "home-middle": {
+      "unit": "month",
+      "launch": { "INR": 55000, "USD": 700 },
+      "full": { "INR": 80000, "USD": 1020 }
+    },
+    "article-inline": {
+      "unit": "month",
+      "launch": { "INR": 22000, "USD": 280 },
+      "full": { "INR": 35000, "USD": 450 }
+    },
+    "newsletter": {
+      "unit": "issue",
+      "launch": { "INR": 12000, "USD": 150 },
+      "full": { "INR": 28000, "USD": 360 }
+    },
+    "category": {
+      "unit": "month",
+      "founding": false,
+      "note": "NOT covered by the pricing checklist. Kept at the rate the site already showed (INR 55,000; USD 655 = that rate at the old 84 rate). Confirm with the founder.",
+      "launch": { "INR": 55000, "USD": 655 },
+      "full": { "INR": 55000, "USD": 655 }
+    }
+  },
+
+  "extras": {
+    "newsletter": {
+      "unit": "issue",
+      "recurring": false,
+      "durationDiscount": false,
+      "launch": { "INR": 12000, "USD": 150 },
+      "full": { "INR": 28000, "USD": 360 }
+    },
+    "founder": {
+      "unit": "once",
+      "recurring": false,
+      "durationDiscount": false,
+      "launch": { "INR": 40000, "USD": 510 },
+      "full": { "INR": 65000, "USD": 830 }
+    },
+    "report": {
+      "unit": "month",
+      "recurring": true,
+      "durationDiscount": true,
+      "launch": { "INR": 12000, "USD": 150 },
+      "full": { "INR": 12000, "USD": 150 }
+    }
+  },
+
+  "products": {
+    "banner-slot": { "slot": "home-top" },
+    "newsletter-mention": { "extra": "newsletter" },
+    "founder-story": { "extra": "founder" }
+  }
+}
