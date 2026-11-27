@@ -257,7 +257,7 @@ function BrandPanelForm({ profile }) {
             shape="rounded"
             stretch
             className="!border-transparent !bg-transparent p-0"
-            itemClassName="h-10 min-w-0 whitespace-normal px-1.5 text-[11px] leading-tight sm:px-2 sm:text-[13px]"
+            itemClassName="h-10 min-w-0 whitespace-normal px-1.5 text-[11px] leading-tight sm:px-2 sm:text-[13px] max-sm:!h-auto max-sm:min-h-[44px] max-sm:!whitespace-normal max-sm:!px-1 max-sm:py-2 max-sm:!text-[10px] max-sm:!tracking-[0.04em] max-sm:text-center"
           />
           <div className="mt-3 border-t border-line" />
           <div id="panel-preview-panel" role="tabpanel" aria-labelledby={`panel-preview-tab-${tab}`} className="flex flex-1 flex-col px-1 pt-5 sm:px-3">

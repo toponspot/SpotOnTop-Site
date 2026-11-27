@@ -129,25 +129,25 @@ function FeaturedContent({ slides, spotOfTheWeek, comparison }) {
 
         <div className="flex flex-col gap-5">
           {spotOfTheWeek && (
-          <article className="border border-line bg-ink-800 p-6 sm:p-7">
-            <Kicker>Spot of the week</Kicker>
-            <div className="mt-5 flex items-center gap-4">
-              <Avatar initials={spotOfTheWeek.initial} tone="gold" size="md" className="text-xl" />
-              <div>
-                <h3 className="text-lg font-extrabold tracking-[-0.01em] text-fg sm:text-xl">{spotOfTheWeek.name}</h3>
-                <p className="text-sm text-fg-muted">{spotOfTheWeek.meta}</p>
+            <article className="border border-line bg-ink-800 p-6 sm:p-7">
+              <Kicker>Spot of the week</Kicker>
+              <div className="mt-5 flex items-center gap-4">
+                <Avatar initials={spotOfTheWeek.initial} tone="gold" size="md" className="text-xl" />
+                <div>
+                  <h3 className="text-lg font-extrabold tracking-[-0.01em] text-fg sm:text-xl">{spotOfTheWeek.name}</h3>
+                  <p className="text-sm text-fg-muted">{spotOfTheWeek.meta}</p>
+                </div>
               </div>
-            </div>
-            <p className="mt-5 text-[15px] leading-relaxed text-fg-muted">{spotOfTheWeek.blurb}</p>
-            <p className="mt-5 flex flex-wrap gap-x-6 gap-y-1 text-sm text-fg-muted">
-              <span>
-                <strong className="font-bold text-fg">{formatNumber(spotOfTheWeek.views)}</strong> profile views
-              </span>
-              <span>
-                <strong className="font-bold text-fg">{spotOfTheWeek.enquiries}</strong> enquiries
-              </span>
-            </p>
-          </article>
+              <p className="mt-5 text-[15px] leading-relaxed text-fg-muted">{spotOfTheWeek.blurb}</p>
+              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-1 text-sm text-fg-muted">
+                <span>
+                  <strong className="font-bold text-fg">{formatNumber(spotOfTheWeek.views)}</strong> profile views
+                </span>
+                <span>
+                  <strong className="font-bold text-fg">{spotOfTheWeek.enquiries}</strong> enquiries
+                </span>
+              </p>
+            </article>
           )}
 
           <article className="flex-1 border border-line bg-ink-800 p-6 sm:p-7">
@@ -161,6 +161,7 @@ function FeaturedContent({ slides, spotOfTheWeek, comparison }) {
               stretch
               mode="tabs"
               idPrefix="compare"
+              itemClassName="max-sm:min-w-0 max-sm:!h-auto max-sm:min-h-[40px] max-sm:!whitespace-normal max-sm:!px-2 max-sm:py-2 max-sm:!text-[10px] max-sm:!tracking-[0.06em] max-sm:text-center max-sm:leading-tight"
             />
             <ul id="compare-panel" role="tabpanel" aria-labelledby={`compare-tab-${compare}`} className="mt-5 space-y-3.5">
               {(comparison?.[compare] ?? []).map((item) => (

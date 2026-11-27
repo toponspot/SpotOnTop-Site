@@ -135,7 +135,7 @@ function QuoteBuilderContent() {
                 tone="light"
                 shape="rounded"
                 stretch
-                className="min-w-[440px]"
+                className="max-sm:!grid max-sm:grid-cols-2 sm:min-w-[440px]"
                 itemClassName="h-9 text-xs sm:text-[13px]"
               />
             </div>
